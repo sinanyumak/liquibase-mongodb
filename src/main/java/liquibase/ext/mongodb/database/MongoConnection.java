@@ -73,7 +73,7 @@ public class MongoConnection extends AbstractNoSqlConnection {
         boolean isMongodbConnection = url.toLowerCase().startsWith("mongodb");
 
         if (isMongodbConnection) {
-            final String errorMessagePrefix = "The required dependencies JAR files are not available on the classpath:";
+            final String errorMessagePrefix = "The required dependencies (JAR files) are not available on the classpath:";
             String errorMessage = errorMessagePrefix;
 
             try {
