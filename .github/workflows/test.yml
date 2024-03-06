@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         java: [8, 11, 17]
-        mongodb: [4]
+        mongodb: [5, 6, 7]
     services:
       mongodb:
         image: mongo:${{ matrix.mongodb }}
@@ -95,6 +95,7 @@ jobs:
     strategy:
       matrix:
         java: [ 11, 17 ]
+        mongodb: [5, 6, 7]
 
     steps:
       - uses: actions/checkout@v4
@@ -160,7 +161,7 @@ jobs:
       - name: Start Database
         run: |
           docker ps -a
-          docker-compose -f ./src/test/resources/docker/docker-compose.yml up -d
+          docker-compose -f ./src/test/resources/docker/docker-compose.yml up -d mongo-${{ matrix.mongodb }}
           docker ps -a
 
       - name: Harness Foundational Test Suite Run - Java ${{ matrix.java }}
@@ -168,7 +169,7 @@ jobs:
 
       - name: Stop Docker Databases
         if: always()
-        run: docker-compose -f ./src/test/resources/docker/docker-compose.yml down
+        run: docker-compose -f ./src/test/resources/docker/docker-compose.yml down mongo-${{ matrix.mongodb }}
 
       - name: Archive Mongo Database Test Results
         uses: actions/upload-artifact@v4
