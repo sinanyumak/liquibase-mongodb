@@ -20,6 +20,13 @@
             "description":"createIndex collectionName=countries_json",
             "id":"3",
             "execType":"EXECUTED"
+        },
+        {
+            "fileName":"liquibase\/harness\/compatibility\/foundational\/changelogs\/nosql\/createIndex.json",
+            "author":"as",
+            "description":"createIndex collectionName=salesData_json",
+            "id":"4",
+            "execType":"EXECUTED"
         }
     ]
 }
