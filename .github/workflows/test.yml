@@ -163,7 +163,7 @@ jobs:
           docker-compose -f ./src/test/resources/docker/docker-compose.yml up -d
           docker ps -a
 
-      - name: Harness Foundational Test Suite Run - Java ${{ matrix.java }}
+      - name: Harness Foundational Test Suite Run on Docker - Java ${{ matrix.java }}
         run: mvn -Dtest="HarnessNoSqlCompatibility" -DdbName=mongodb clean package
 
       - name: Stop Docker Databases
