@@ -70,8 +70,14 @@ public class MongoConnection extends AbstractNoSqlConnection {
             return false;
         }
 
-        boolean isMongodbConnection = url.toLowerCase().startsWith("mongodb");
+         boolean isMongodbConnection = url.toLowerCase().startsWith("mongodb");
 
+        showErrorMessageIfSomeRequiredDependenciesAreNotPresent(isMongodbConnection);
+
+        return isMongodbConnection;
+    }
+
+    private static void showErrorMessageIfSomeRequiredDependenciesAreNotPresent(boolean isMongodbConnection) {
         if (isMongodbConnection) {
             final String errorMessagePrefix = "The required dependencies (JAR files) are not available on the classpath:";
             String errorMessage = errorMessagePrefix;
@@ -99,8 +105,6 @@ public class MongoConnection extends AbstractNoSqlConnection {
                 throw new UnexpectedLiquibaseException(errorMessage);
             }
         }
-
-        return isMongodbConnection;
     }
 
     @Override
