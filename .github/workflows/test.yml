@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-test:
-    uses: liquibase/build-logic/.github/workflows/os-extension-test.yml@v0.6.3
+    uses: liquibase/build-logic/.github/workflows/os-extension-test.yml@v0.6.5
     secrets: inherit
 
   integration-tests:
@@ -164,7 +164,7 @@ jobs:
           docker-compose -f ./src/test/resources/docker/docker-compose.yml up -d mongo-${{ matrix.mongodb }}
           docker ps -a
 
-      - name: Harness Foundational Test Suite Run - Java ${{ matrix.java }}
+      - name: Harness Foundational Test Suite Run on Docker - Java ${{ matrix.java }}
         run: mvn -Dtest="HarnessNoSqlCompatibility" -DdbName=mongodb clean package
 
       - name: Stop Docker Databases
