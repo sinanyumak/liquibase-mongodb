@@ -88,6 +88,30 @@
           }
         ]
       }
+    },
+    {
+      "changeSet": {
+        "id": "4",
+        "author": "as",
+        "changes": [
+          {
+            "createIndex": {
+              "collectionName": "salesData_json",
+              "keys": {
+                "$rawJson": {
+                  "tenantId": 1,
+                  "customFields.$**": 1
+                }
+              },
+              "options": {
+                "$rawJson": {
+                  "name": "compoundWildcardIndex_json"
+                }
+              }
+            }
+          }
+        ]
+      }
     }
   ]
 }
