@@ -60,3 +60,12 @@ databaseChangeLog:
             collectionName: countries_yaml
             keys: '{ name: 1, type: 1}'
             options: '{unique: true, name: "ui_countries"}'
+
+  - changeSet:
+      id: 4
+      author: as
+      changes:
+        - createIndex:
+            collectionName: salesData_yaml
+            keys: '{ tenantId: 1, "customFields.$**": 1 }'
+            options: '{name: "compoundWildcardIndex_yaml"}'
