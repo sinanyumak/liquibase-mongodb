@@ -165,7 +165,7 @@ jobs:
           docker ps -a
 
       - name: Harness Foundational Test Suite Run on Docker - Java ${{ matrix.java }}
-        run: mvn -Dtest="HarnessNoSqlCompatibility" -DdbName=mongodb clean package
+        run: mvn -Dtest="HarnessNoSqlCompatibility" -DdbName=mongodb clean package -DdbVersion=${{ matrix.mongodb }}
 
       - name: Stop Docker Databases
         if: always()
