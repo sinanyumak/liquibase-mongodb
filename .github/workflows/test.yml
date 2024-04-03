@@ -161,7 +161,7 @@ jobs:
       - name: Start Database
         run: |
           docker ps -a
-          docker-compose -f ./src/test/resources/docker/docker-compose.yml up -d mongo-${{ matrix.mongodb }}
+          docker compose -f ./src/test/resources/docker/docker-compose.yml up -d mongo-${{ matrix.mongodb }}
           docker ps -a
 
       - name: Harness Foundational Test Suite Run on Docker - Java ${{ matrix.java }}
@@ -169,7 +169,7 @@ jobs:
 
       - name: Stop Docker Databases
         if: always()
-        run: docker-compose -f ./src/test/resources/docker/docker-compose.yml down mongo-${{ matrix.mongodb }}
+        run: docker compose -f ./src/test/resources/docker/docker-compose.yml down mongo-${{ matrix.mongodb }}
 
       - name: Archive Mongo Database Test Results
         uses: actions/upload-artifact@v4
