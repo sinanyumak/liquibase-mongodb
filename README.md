@@ -2,6 +2,13 @@
 
 [![Build Status](https://travis-ci.com/liquibase/liquibase-mongodb.svg?branch=master)](https://travis-ci.com/liquibase/liquibase-mongodb)
 
+## Note
+> :flags: This repository has been modified to support Update Sql command for Mongo DB. 
+
+```bash
+liquibase update-sql --changelog-file=example-changelog.xml
+```
+
 ## Table of contents
 
 1. [Introduction](#introduction)
